@@ -2,45 +2,99 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$btn-clr: #3371C1;
+$del-btn:#c70000;
+body {
+	background: #E8EAED;
 
+	#posts-home {
+		display: flex;
+		justify-content: center;
+		padding-top: 20px;
 
-#posts-home{
-	
-	display: flex;
-	justify-content: space-evenly;
-	padding-top: 25px;
-
-	.deewar-posts{
-		width: 50%;
-		border-right: 1px dashed #007effe0;
-		border-left: 1px dashed #007effe0;
-
-		.new-post-form{
-			display: flex;
-			justify-content: center;
-			form{
-			display: flex;
-				flex-direction: column;
-			}
-			
+		.groups {
+			width: 25%;
+			text-align: center;
 		}
 
-		.posts-list{
-			
+		.deewar-posts {
+			width: 50%;
+
+
+			.new-post-form {
+				textarea {
+					width: 100%;
+					height: 8em;
+					padding: 12px 20px;
+					margin: 8px 0;
+					display: inline-block;
+					border: 1px solid #ccc;
+					border-radius: 4px;
+					box-sizing: border-box;
+				}
+
+				input[type=submit] {
+					width: 20%;
+					background-color: $btn-clr;
+					color: white;
+					padding: 14px 0px;
+					border: none;
+					border-radius: 4px;
+					cursor: pointer;
+				}
+
+				input[type=submit]:hover {
+					background-color: $btn-clr*1.25;
+				}
+			}
+
+			.post {
+				// box-shadow: 1px 1px 1px 1px lightgrey;
+				ul {
+					list-style: none;
+					padding: 0;
+
+					li {
+						background: white;
+						border-radius: 12px;
+    				padding: 5px 10px;
+						margin-bottom: 10px;
+
+					}
+					a{
+						color: inherit;
+						text-decoration: none;
+					}
+					#delete-btn{
+						font-size: 19px;
+						color: $del-btn;
+						float: right;
+					}
+					#delete-btn:hover{
+						color: $del-btn*1.5;
+						font-size: 21px;
+
+					}
+				}
+				.comments{
+					textarea {
+						background: #e8eaed6e;
+						width: 50%;
+						padding: 12px 20px;
+						margin: 0;
+						display: inline-block;
+						border: 1px solid #ccc;
+						border-radius: 30px;
+
+					}
+
+				}
+			}
+		}
+
+		.friend-list {
+			width: 25%;
+			text-align: center;
 		}
 	}
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

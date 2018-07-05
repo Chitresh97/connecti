@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
 
   post 'likes/toggle/:post_id', to: 'likes#toggle', as: :toggle_like
 

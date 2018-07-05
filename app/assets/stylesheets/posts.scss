@@ -1,9 +1,11 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 $btn-clr: #3371C1;
-$del-btn:#c70000;
+$del-btn: #c70000;
+$like-btn: #90c156;
+$cmt-btn: #cc3d3d;
+
 body {
 	background: #E8EAED;
 
@@ -19,7 +21,6 @@ body {
 
 		.deewar-posts {
 			width: 50%;
-
 
 			.new-post-form {
 				textarea {
@@ -37,7 +38,7 @@ body {
 					width: 20%;
 					background-color: $btn-clr;
 					color: white;
-					padding: 14px 0px;
+					padding: 14px 0;
 					border: none;
 					border-radius: 4px;
 					cursor: pointer;
@@ -57,36 +58,66 @@ body {
 					li {
 						background: white;
 						border-radius: 12px;
-    				padding: 5px 10px;
+						padding: 5px 10px;
 						margin-bottom: 10px;
-
 					}
-					a{
+
+					a {
 						color: inherit;
 						text-decoration: none;
 					}
-					#delete-btn{
+
+					#delete-btn {
 						font-size: 19px;
 						color: $del-btn;
 						float: right;
 					}
-					#delete-btn:hover{
+
+					#delete-btn:hover {
 						color: $del-btn*1.5;
 						font-size: 21px;
-
 					}
 				}
-				.comments{
+
+				.comments {
 					textarea {
-						background: #e8eaed6e;
+						background: white;
 						width: 50%;
 						padding: 12px 20px;
 						margin: 0;
 						display: inline-block;
 						border: 1px solid #ccc;
 						border-radius: 30px;
-
 					}
+
+					input[type=submit] {
+						float: right;
+						width: 20%;
+						background-color: $cmt-btn;
+						color: white;
+						padding: 14px 0;
+						border: none;
+						border-radius: 4px;
+						cursor: pointer;
+						margin: 10px 95px 0px 0px;
+					}
+					input[type=submit]:hover{
+						
+					background-color: $cmt-btn*1.15;
+					}
+				}
+
+				.like {
+					background: $like-btn;
+					color: white;
+					margin-bottom: 8px;
+					padding: 0;
+					display: inline-block;
+					border-radius: 5px;
+					padding: 5px 10px;
+				}
+				.like:hover{
+					background: $like-btn*1.15;
 
 				}
 			}

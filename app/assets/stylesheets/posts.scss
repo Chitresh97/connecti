@@ -102,8 +102,27 @@ body {
 						margin: 10px 95px 0px 0px;
 					}
 					input[type=submit]:hover{
-						
+
 					background-color: $cmt-btn*1.15;
+					}
+					.comments-list{
+						ul{
+							li{
+								 background: #e4e4e4;
+								 margin-top: 5px;
+							}
+						}
+						#cmt-delete-btn {
+							font-size: 15px;
+							color: $del-btn;
+							float: right;
+						}
+
+						#cmt-delete-btn:hover {
+							color: $del-btn*1.5;
+							font-size: 17px;
+						}
+
 					}
 				}
 

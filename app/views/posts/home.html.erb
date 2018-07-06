@@ -2,7 +2,7 @@
 
 	<div class="groups">
 		<h3>Groups</h3>
-		
+
 	</div>
 
 	<div class="deewar-posts">
@@ -26,54 +26,52 @@
 						<% if user_signed_in? && post.user_id ==  current_user.id %>
 							<span id="delete-btn"><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i> Delete'.html_safe, destroy_post_path(post.id), method: :delete %>
 							</span>
-						</p>
-						<p><%= post.content %></p>
+						<% end %>
+					</p>
+					<p><%= post.content %></p>
 
-
-					<% end %>
 					<hr/>
 
 					<% if user_signed_in? %>
-					<div class="like">
-
-
-						<%= link_to post.like_status_string(current_user.id), toggle_like_path(post.id), method: :post %>
+						<div class="like">
+							<%= link_to post.like_status_string(current_user.id), toggle_like_path(post.id), method: :post %>
 						</div>
 					<% end %>
-				<%= post.likes.length %> people like this
+					<%= post.likes.length %>
+					people like this
 
-				<div class="comments">
-					<% if user_signed_in? %>
-						<%= form_for @comment do |f| %>
-						<%= f.hidden_field :post_id, value: post.id %>
-						<%= f.text_area :content ,placeholder:"Write a comment..."%>
-						<%= f.submit "Comment" %>
+					<div class="comments">
+						<% if user_signed_in? %>
+							<%= form_for @comment do |f| %>
+							<%= f.hidden_field :post_id, value: post.id %>
+							<%= f.text_area :content ,placeholder:"Write a comment..."%>
+							<%= f.submit "Comment" %>
+						<% end %>
 					<% end %>
-				<% end %>
+					<div class="comments-list">
+						<ul>
+							<% post.comments.reverse.each do |comment| %>
+								<li>
+									<p>
+										<b><%= comment.user.email %></b>
+										<% if user_signed_in? && comment.user_id ==  current_user.id %>
+											<span id="cmt-delete-btn"><%= link_to "Delete", destroy_comment_path(comment.id), method: :delete %></span>
+										<% end %>
+									</p>
+									<p><%= comment.content %></p>
 
-				<ul>
-					<% post.comments.reverse.each do |comment| %>
-						<li>
-							<p>
-								<b><%= comment.user.email %></b>
-							</p>
-							<p><%= comment.content %></p>
+								</li>
 
-							<% if user_signed_in? && comment.user_id ==  current_user.id %>
-								<p><%= link_to "Delete", destroy_comment_path(comment.id), method: :delete %></p>
 							<% end %>
+						</ul>
+					</div>
 
-						</li>
+				</div>
 
-					<% end %>
-				</ul>
+			</li>
 
-			</div>
-
-		</li>
-
-	<% end %>
-</ul>
+		<% end %>
+	</ul>
 
 </div>
 
@@ -82,7 +80,7 @@
 <div class="friend-list">
 <h3>Friends</h3>
 <p>
-You got no friends :'(
+	You got no friends :'(
 </p>
 </div>
 

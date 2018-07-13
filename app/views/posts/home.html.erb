@@ -8,7 +8,7 @@
 	<div class="deewar-posts">
 		<div class="new-post-form">
 			<% if user_signed_in? %>
-				<%= form_for @post do |f| %>
+				<%= form_for @post, remote:true do |f| %>
 
 				<%= f.text_area :content,placeholder: "Write something here.." %>
 				<%= f.submit "Share" %>
@@ -17,59 +17,9 @@
 	</div>
 
 	<div class="post">
-		<ul class="posts-list">
+		<ul id ="posts-list" class="posts-list">
 			<% @posts.reverse.each do |post| %>
-				<li>
-
-					<p>
-						<b><%= post.user.email %></b>
-						<% if user_signed_in? && post.user_id ==  current_user.id %>
-							<span id="delete-btn"><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i> Delete'.html_safe, destroy_post_path(post.id), method: :delete %>
-							</span>
-						<% end %>
-					</p>
-					<p><%= post.content %></p>
-
-					<hr/>
-
-					<% if user_signed_in? %>
-						<div class="like">
-							<%= link_to post.like_status_string(current_user.id), toggle_like_path(post.id), method: :post %>
-						</div>
-					<% end %>
-					<%= post.likes.length %>
-					people like this
-
-					<div class="comments">
-						<% if user_signed_in? %>
-							<%= form_for @comment do |f| %>
-							<%= f.hidden_field :post_id, value: post.id %>
-							<%= f.text_area :content ,placeholder:"Write a comment..."%>
-							<%= f.submit "Comment" %>
-						<% end %>
-					<% end %>
-					<div class="comments-list">
-						<ul>
-							<% post.comments.reverse.each do |comment| %>
-								<li>
-									<p>
-										<b><%= comment.user.email %></b>
-										<% if user_signed_in? && comment.user_id ==  current_user.id %>
-											<span id="cmt-delete-btn"><%= link_to "Delete", destroy_comment_path(comment.id), method: :delete %></span>
-										<% end %>
-									</p>
-									<p><%= comment.content %></p>
-
-								</li>
-
-							<% end %>
-						</ul>
-					</div>
-
-				</div>
-
-			</li>
-
+			<%=render 'post',post:post%>
 		<% end %>
 	</ul>
 

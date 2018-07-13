@@ -1,0 +1,17 @@
+<div class="comments">
+  <% if user_signed_in? %>
+    <%= form_for @comment, remote:true do |f| %>
+    <%= f.hidden_field :post_id, value: post.id %>
+    <%= f.text_area :content ,placeholder:"Write a comment..."%>
+    <%= f.submit "Comment" %>
+  <% end %>
+<% end %>
+<div class="comments-list">
+  <ul id="post-comment-list">
+    <% post.comments.reverse.each do |comment| %>
+      <%=render 'comments/comment', comment: comment%>
+    <% end %>
+  </ul>
+</div>
+
+</div>

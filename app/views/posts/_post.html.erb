@@ -1,0 +1,19 @@
+<li id="post-<%=post.id%>">
+  <p>
+    <b><%= post.user.email %></b>
+    <% if user_signed_in? && post.user_id ==  current_user.id %>
+      <span id="delete-btn"><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i> Delete'.html_safe, destroy_post_path(post.id), method: :delete, remote: true%>
+      </span>
+    <% end %>
+  </p>
+  <p><%= post.content %></p>
+  <hr/>
+  <% if user_signed_in? %>
+    <div class="like">
+      <%= link_to post.like_status_string(current_user.id), toggle_like_path(post.id), method: :post %>
+    </div>
+  <% end %>
+  <%= post.likes.length %>
+  people like this
+  <%=render 'comments/post_comment', post:post%>
+</li>

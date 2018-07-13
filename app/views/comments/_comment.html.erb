@@ -1,0 +1,10 @@
+<li>
+  <p>
+    <b><%= comment.user.email %></b>
+    <% if user_signed_in? && comment.user_id ==  current_user.id %>
+      <span id="cmt-delete-btn"><%= link_to "Delete", destroy_comment_path(comment.id), method: :delete %></span>
+    <% end %>
+  </p>
+  <p><%= comment.content %></p>
+
+</li>
